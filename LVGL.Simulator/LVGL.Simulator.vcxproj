@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="Mile.Project.Windows.Legacy\Mile.Project.Platform.Win32.props" />
+  <Import Project="Mile.Project.Windows.Legacy\Mile.Project.Platform.x64.props" />
+  <Import Project="Mile.Project.Windows.Legacy\Mile.Project.Platform.ARM64.props" />
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{3CA6E070-4AC1-475E-BB17-CF29AE4806DF}</ProjectGuid>
+    <RootNamespace>LVGL</RootNamespace>
+    <MileProjectType>ConsoleApplication</MileProjectType>
+    <MileProjectManifestFile>LVGL.Simulator.manifest</MileProjectManifestFile>
+    <MileProjectEnableVCLTLSupport>true</MileProjectEnableVCLTLSupport>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)'=='Debug'">
+    <SupportLTL>false</SupportLTL>
+  </PropertyGroup>
+  <Import Project="Mile.Project.Windows.Legacy\Mile.Project.Cpp.props" />
+  <Import Project="freetype.props" />
+  <PropertyGroup>
+    <IncludePath>C:\Users\34397\Desktop\杂类\lv_port_win_visual_studio-master\lv_port_win_visual_studio-master - 副本\Pre-built.2\include;C:\Users\34397\Desktop\杂类\lv_port_win_visual_studio-master\lv_port_win_visual_studio-master - 副本\SDL2_mixer-2.8.1\include;C:\Users\34397\Desktop\杂类\lv_port_win_visual_studio-master\lv_port_win_visual_studio-master - 副本\SDL2-2.30.1\include;$(MSBuildThisFileDirectory);$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LibraryPath>C:\Users\34397\Desktop\杂类\lv_port_win_visual_studio-master\lv_port_win_visual_studio-master - 副本\Pre-built.2\lib\x86;C:\Users\34397\Desktop\杂类\lv_port_win_visual_studio-master\lv_port_win_visual_studio-master - 副本\SDL2_mixer-2.8.1\lib\x86;C:\Users\34397\Desktop\杂类\lv_port_win_visual_studio-master\lv_port_win_visual_studio-master - 副本\SDL2-2.30.1\lib\x86;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LibraryPath>C:\Users\34397\Desktop\杂类\lv_port_win_visual_studio-master\lv_port_win_visual_studio-master - 副本\Pre-built.2\lib\x86;C:\Users\34397\Desktop\杂类\lv_port_win_visual_studio-master\lv_port_win_visual_studio-master - 副本\SDL2_mixer-2.8.1\lib\x86;C:\Users\34397\Desktop\杂类\lv_port_win_visual_studio-master\lv_port_win_visual_studio-master - 副本\SDL2-2.30.1\lib\x86;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Optimization Condition="'$(Configuration)'=='Release'">MinSpace</Optimization>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">SDL2.lib;SDL2_mixer.lib;pthreadVC2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <Link>
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">SDL2.lib;SDL2_mixer.lib;pthreadVC2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="LVGL.Portable.vcxitems" />
+  <Import Project="LVGL.Drivers.vcxitems" />
+  <ItemGroup>
+    <ClInclude Include="lv_conf.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="lv_drv_conf.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Manifest Include="LVGL.Simulator.manifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Mile.Project.Properties.h" />
+    <ClInclude Include="my\my_gui.h" />
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="LVGL.Simulator.c" />
+    <ClCompile Include="my\lcv.c" />
+    <ClCompile Include="my\musicbox_col.c" />
+    <ClCompile Include="my\musicbox_frame.c" />
+    <ClCompile Include="my\musicbox_img.c" />
+    <ClCompile Include="my\music_paly.c" />
+    <ClCompile Include="my\music_pause.c" />
+    <ClCompile Include="my\music_player.c" />
+    <ClCompile Include="my\music_sound.c" />
+    <ClCompile Include="my\my_gui.c" />
+    <ClCompile Include="my\OIP.c" />
+    <ClCompile Include="my\tec.c" />
+    <ClCompile Include="my\tes.c" />
+    <ClCompile Include="my\test .c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="LVGL.Simulator.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="LVGL.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
+    <None Include="freetype.props" />
+  </ItemGroup>
+  <Import Project="Mile.Project.Windows.Legacy\Mile.Project.Cpp.targets" />
+</Project>
